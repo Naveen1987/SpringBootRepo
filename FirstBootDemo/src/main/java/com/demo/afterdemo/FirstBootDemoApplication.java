@@ -10,14 +10,14 @@ import org.springframework.web.servlet.view.JstlView;
 @SpringBootApplication (scanBasePackages={"com.controllers"})
 public class FirstBootDemoApplication  extends WebMvcConfigurerAdapter {
 
-    @Override
+    /*@Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/");
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         registry.viewResolver(resolver);
-    }
+    }*/
     /*
      * Replacement of above method is 
      * add two line in application.properties file
