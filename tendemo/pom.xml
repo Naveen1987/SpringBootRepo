@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.6.RELEASE</version>
+		<version>1.5.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -41,6 +41,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+  		 <groupId>org.springframework.boot</groupId>
+   		 <artifactId>spring-boot-starter-data-mongodb</artifactId>
+  		</dependency>
+		<!--Now for Servlet and JSP code-->
+		<dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
 		</dependency>
@@ -48,6 +53,7 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+		<!-- For Json Object -->
 		<dependency>
   		 <groupId>org.json</groupId>
    		<artifactId>json</artifactId>
