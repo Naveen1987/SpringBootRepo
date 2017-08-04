@@ -3,6 +3,10 @@
 <%@page import="com.ten.models.Student"%>
 <%@page import="java.util.List"%>
 <%@include file="Init.jsp" %>
+<!-- <form action="/delete" method="post">
+<input type="text" name="sid"/>
+<input type="submit"/>
+</form> -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -55,7 +59,7 @@ function editInfo(stdId){
 		type: 'Put',
 	    url: 'edit',
 	    async: true,
-	    contentType: 'application/json',
+	    //contentType: 'application/json',
 	    data:{'sid':stdId},
 	    success: function (result) {
 	  
@@ -77,9 +81,9 @@ function deleteInfo(stdId){
 	
 	$.post({
 	    url: 'delete',
-	    contentType: 'application/json',
 	    async: true,
 	    data:{'sid':stdId},
+	    contentType: 'application/json',
 	    success: function (result) {
 	    }
 	});
