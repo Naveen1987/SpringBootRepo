@@ -4,6 +4,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<style type="text/css">
+/* .modal-lg {
+    max-width: 90% !important;
+} */
+/* .modal-dialog {
+         max-width: 90% !important;
+         height:900px !important;
+        } */
+</style>
+
 </head>
 <body>
 <div class="container-fluid-1280">
@@ -60,14 +70,14 @@ This is demo
 </script> --%>
 
 <div id="myModal" class="modal fade">
-    <div class="modal-dialog  modal-lg">
+    <div class="modal-dialog  modal-lg" style="max-width: 90% !important;">
         <div class="modal-content">
             <div class="modal-header">
             	<h4 class="modal-title">List Of All Students</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> -->
+                <button type="button" class="close" id="btn-all" aria-hidden="true">×</button>
             </div>
             <div class="modal-body" id="jspdata">
-				
             </div>
         </div>
     </div>
@@ -77,6 +87,12 @@ This is demo
 		$('#jspdata').load('/all');
 		/*It will disable all key effect and outside click*/
 		$("#myModal").modal({backdrop: 'static', keyboard: false});
+	});
+	
+	 $("#btn-all").click(function(){
+		 $('body').removeClass('modal-open');
+		 $('.modal-backdrop').remove();
+		 $("#myModal").hide();
 	});
 </script>
 

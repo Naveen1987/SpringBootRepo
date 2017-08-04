@@ -52,7 +52,54 @@ for(Student s:st)
 </div>
 </body>
 </html>
+<%--
 
+style="
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 15px;
+    "
+    
+    max-width: 90% !important;width:auto; height:auto,max-height:100% !important
+ --%>
+<div id="myEditModal" class="modal fade">
+    <div class="modal-dialog  modal-lg" style="max-width: 90% !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+            	<h4 class="modal-title">Edit Student Info</h4>
+                 <button type="button" class="close"  id="btn-edit" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body" id="editdata">
+				
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$("#btn-edit").click(function(){
+	    $("#myEditModal").hide();
+});
+</script>
+
+<!-- <script type="text/javascript">
+
+$('td').on('click', function() {
+    var $this = $(this);
+    var $input = $('<input>', {
+        value: $this.text(),
+        type: 'text',
+        blur: function() {
+           $this.text(this.value);
+        },
+        keyup: function(e) {
+           if (e.which === 13) $input.blur();
+        }
+    }).appendTo( $this.empty() ).focus();
+});
+
+</script> -->
 <script type="text/javascript">
 function editInfo(stdId){
 	/* $.ajax({
@@ -65,15 +112,17 @@ function editInfo(stdId){
 	  
 	    }
 	}); */
-	$.ajax({
+	/* $.ajax({
 		type: 'Put',
 	    url: 'edit',
 	    data:{'sid':stdId},
 	    success: function (result) {
 	    bootbox.alert("Successfully Edited");
 	    }
-	});
-	
+	}); */
+	$('#editdata').load('/editJsp?sid='+stdId);
+	/*It will disable all key effect and outside click*/
+	$("#myEditModal").modal({backdrop: 'static', keyboard: false});
 }
 function deleteInfo(stdId){
 	
