@@ -1,0 +1,84 @@
+	/*
+	 	
+	function editInfo(stdId){
+	$.ajax({
+		type: 'Put',
+	    url: 'edit',
+	    async: true,
+	    //contentType: 'application/json',
+	    data:{'sid':stdId},
+	    success: function (result) {
+	  
+	    }
+	});
+	bootbox.alert(stdId);
+	
+	 * */
+	@PutMapping("/edit")
+	public String editStudent(@RequestParam  String sid){
+		System.out.println("Edit Student");
+		System.out.println("Data="+sid);
+		return "Put";
+	}
+	
+	/*
+$.post({
+	    url: 'delete',
+	    async: true,
+	    data:{'sid':stdId},
+	    success: function (result) {
+	    }
+	});
+	or
+<form action="/delete" method="post">
+<input type="text" name="sid"/>
+<input type="submit"/>
+</form>
+	 * */
+//	@PostMapping(value="/delete")
+//	public String deleteStudent(@RequestParam (value="sid", required=false) String sid){
+//		System.out.println("Delete  Student"+sid);
+//		return "Post="+sid;
+//	}
+//	@PostMapping(value="/delete")
+//	public String deleteStudent(WebRequest request){
+//		System.out.println("Delete  Student"+request.getParameter("sid"));
+//		return "Post=";
+//	}
+//	@PostMapping(value="/delete")
+//	public String deleteStudent(HttpServletRequest request){
+//		System.out.println("Delete  Student"+request.getParameter("sid"));
+//		return "Post=";
+//	}
+	@PostMapping(value="/delete")
+	public String deleteStudent(@RequestParam String sid){
+		
+		return "Post";
+	}
+	
+	/*
+	$.post({
+	    url: 'delete',
+	    async: true,
+	    data:{'sid':stdId},
+	    contentType: 'application/json',
+	    success: function (result) {
+	    }
+	});
+	
+	 * */
+//	@PostMapping(consumes = {"application/json"},value="/delete")
+//	public String deleteStudent(@RequestBody  String sid){
+//		System.out.println("Delete  RequestBody Student"+sid);
+//		return "Post="+sid;
+//	}
+	
+
+	
+	
+	/*@GetMapping("/get")
+	public String getStudent(){
+		System.out.println(std.getStudents());
+		return "GET";
+	}*/
+	
