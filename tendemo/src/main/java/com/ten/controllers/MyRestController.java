@@ -2,8 +2,11 @@ package com.ten.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+import org.slf4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,13 +24,7 @@ import com.ten.services.StudentService;
 
 @RestController
 public class MyRestController {
-//Check this from postman
-//	@PostMapping(consumes = "application/json",value="/save")
-//	public String postReq(@RequestBody Student s){
-//		
-//		System.out.println(s);
-//		return "POST";
-//	}
+	 private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	//Now JsonObject
 	@Autowired
 	StudentService std;
@@ -53,43 +50,19 @@ public class MyRestController {
 		System.out.println(sfee);
 		return "GET";
 	}
-	/*
-	 	
-	function editInfo(stdId){
-	$.ajax({
-		type: 'Put',
-	    url: 'edit',
-	    async: true,
-	    //contentType: 'application/json',
-	    data:{'sid':stdId},
-	    success: function (result) {
-	  
-	    }
-	});
-	bootbox.alert(stdId);
-	
-	 * */
 	@PutMapping("/edit")
 	public String editStudent(@RequestParam  String sid){
 		System.out.println("Edit Student");
-		System.out.println("Data="+sid);
+		System.out.println("Edit->"+sid);
 		return "Put";
 	}
 	
-	/*
-$.post({
-	    url: 'delete',
-	    async: true,
-	    data:{'sid':stdId},
-	    success: function (result) {
-	    }
-	});
-	or
-<form action="/delete" method="post">
-<input type="text" name="sid"/>
-<input type="submit"/>
-</form>
-	 * */
+	@PostMapping(value="/delete")
+	public String deleteStudent(@RequestParam String sid){
+		logger.info("Delete Student="+sid);
+		std.delete(sid);
+		return "Post";
+	}
 //	@PostMapping(value="/delete")
 //	public String deleteStudent(@RequestParam (value="sid", required=false) String sid){
 //		System.out.println("Delete  Student"+sid);
@@ -105,23 +78,9 @@ $.post({
 //		System.out.println("Delete  Student"+request.getParameter("sid"));
 //		return "Post=";
 //	}
-	@PostMapping(value="/delete")
-	public String deleteStudent(@RequestParam String sid){
-		
-		return "Post";
-	}
+
 	
-	/*
-	$.post({
-	    url: 'delete',
-	    async: true,
-	    data:{'sid':stdId},
-	    contentType: 'application/json',
-	    success: function (result) {
-	    }
-	});
-	
-	 * */
+// when Conten Type Application/Json	
 //	@PostMapping(consumes = {"application/json"},value="/delete")
 //	public String deleteStudent(@RequestBody  String sid){
 //		System.out.println("Delete  RequestBody Student"+sid);

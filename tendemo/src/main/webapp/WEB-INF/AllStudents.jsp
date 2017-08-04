@@ -55,7 +55,7 @@ for(Student s:st)
 
 <script type="text/javascript">
 function editInfo(stdId){
-	$.ajax({
+	/* $.ajax({
 		type: 'Put',
 	    url: 'edit',
 	    async: true,
@@ -64,29 +64,57 @@ function editInfo(stdId){
 	    success: function (result) {
 	  
 	    }
+	}); */
+	$.ajax({
+		type: 'Put',
+	    url: 'edit',
+	    data:{'sid':stdId},
+	    success: function (result) {
+	    bootbox.alert("Successfully Edited");
+	    }
 	});
-	bootbox.alert(stdId);
+	
 }
 function deleteInfo(stdId){
 	
 	/* $.ajax({
 		type: 'POST',
 	    url: 'delete',
+	    async: true,
 	    contentType: 'application/json',
 	    data:{'sid":stdId},
 	    success: function (result) {
 	    	location.reload();
 	    }
 	}); */
-	
-	$.post({
-	    url: 'delete',
-	    async: true,
-	    data:{'sid':stdId},
-	    contentType: 'application/json',
-	    success: function (result) {
+	bootbox.confirm({
+	    message: "Do You want to Edit this Record?",
+	    buttons: {
+	        confirm: {
+	            label: 'Yes',
+	            className: 'btn-success'
+	        },
+	        cancel: {
+	            label: 'No',
+	            className: 'btn-danger'
+	        }
+	    },
+	    callback: function (result) {
+	        console.log('This was logged in the callback: ' + result);
+	        if(result){
+	        	$.post({
+	        	    url: 'delete',
+	        	    data:{'sid':stdId},
+	        	    success: function (result) {
+	        	    	 bootbox.alert("Successfully Deleted");
+	        	    	 // This is Div of Popup Ypu can Reload It directly 
+	        	    	 //I found It from Inspect window
+	        	    	 //This is My best R&D 
+	        	    	 $('#jspdata').load('/all');
+	        	    }
+	        	});
+	    	}
 	    }
-	});
-	bootbox.alert(stdId);
+	});	
 }
 </script>
